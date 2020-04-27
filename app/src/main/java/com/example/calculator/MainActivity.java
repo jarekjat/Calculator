@@ -14,6 +14,8 @@ import android.widget.Toast;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -83,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Integer> delimetersOperationSigns = getOperationSigns(set);
         if (delimetersOperationSigns.size() > 2)
         {
-            Double result = 0d;
+            BigDecimal result = new BigDecimal(0);
+            MathContext m = new MathContext(17);
             int whichIndexDelimiter = 0;//index of Integer number in delimetersOperationSigns ArrayList
             boolean whetherAchievedEnd = false;
             do
@@ -97,28 +100,31 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if (set.charAt(number) == '\u00D7' || set.charAt(number) == '\u00F7')
                     {
-                        double first;
+                        BigDecimal first;
+
                         int whichIndexTaken;
                         if(delimetersOperationSigns.get(whichIndexDelimiter-1) == 0)//beginning of string set
                         {
                             whichIndexTaken = delimetersOperationSigns.get(whichIndexDelimiter-1);
-                            first = Double.parseDouble(set.substring(whichIndexTaken,number));
+                            //first = Double.parseDouble(set.substring(whichIndexTaken,number));
+                            first = new BigDecimal(set.substring(whichIndexTaken,number));
                         }
                         else //not a beginning of string set
                         {
                             whichIndexTaken = delimetersOperationSigns.get(whichIndexDelimiter-1)+1;
-                            first = Double.parseDouble(set.substring(whichIndexTaken,number));//position starting +1 in order to not get operation sign
+                            //first = Double.parseDouble(set.substring(whichIndexTaken,number));
+                            first = new BigDecimal(set.substring(whichIndexTaken,number));//position starting +1 in order to not get operation sign
                         }
-                        double second = Double.parseDouble(set.substring(number+1,delimetersOperationSigns.get(whichIndexDelimiter+1)));
+                        BigDecimal second = new BigDecimal(set.substring(number+1,delimetersOperationSigns.get(whichIndexDelimiter+1)));//Double.parseDouble(set.substring(number+1,delimetersOperationSigns.get(whichIndexDelimiter+1)));
                         if (set.charAt(number) == '\u00D7')//multiplication
                         {
-                            result=(first*second);
+                            result=first.multiply(second,m);
                         }
                         else if(set.charAt(number) == '\u00F7')//division
                         {
-                            result=(first/second);
+                            result=first.divide(second,m);
                         }
-                        set = set.substring(0,whichIndexTaken) +  Double.toString(result) + set.substring(delimetersOperationSigns.get(whichIndexDelimiter+1));
+                        set = set.substring(0,whichIndexTaken) +  result.toString() + set.substring(delimetersOperationSigns.get(whichIndexDelimiter+1));
                         delimetersOperationSigns = getOperationSigns(set);
                         Log.d(TAG, "manipulateEditText: przyjął nową tablicę (*//)");
                         whichIndexDelimiter = 0;
@@ -140,13 +146,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if (set.charAt(number) == '+' || set.charAt(number) == '-' && number != 0)
                     {
-                        double first;
+                        BigDecimal first;
                         int whichIndexTaken;
                         if(delimetersOperationSigns.get(whichIndexDelimiter-1) == 0)//beginning of string set
                         {
                             whichIndexTaken = delimetersOperationSigns.get(whichIndexDelimiter-1);
                             try {
-                                first = Double.parseDouble(set.substring(whichIndexTaken,number));
+                                //first = Double.parseDouble(set.substring(whichIndexTaken,number));
+                                first = new BigDecimal(set.substring(whichIndexTaken,number));
 
                             }
                             catch (NumberFormatException e)
@@ -162,7 +169,8 @@ public class MainActivity extends AppCompatActivity {
                         {
                             whichIndexTaken = delimetersOperationSigns.get(whichIndexDelimiter-1)+1;
                             try {
-                                first = Double.parseDouble(set.substring(whichIndexTaken,number));//position starting +1 in order to not get operation sign
+                                first = new BigDecimal(set.substring(whichIndexTaken,number));//position starting +1 in order to not get operation sign
+
                             }
                             catch (NumberFormatException e)
                             {
@@ -173,9 +181,9 @@ public class MainActivity extends AppCompatActivity {
                                 return;
                             }
                         }
-                        double second;
+                        BigDecimal second;
                         try {
-                            second = Double.parseDouble(set.substring(number+1,delimetersOperationSigns.get(whichIndexDelimiter+1)));
+                            second = new BigDecimal(set.substring(number+1,delimetersOperationSigns.get(whichIndexDelimiter+1)));
                         }
                         catch (NumberFormatException e)
                         {
@@ -188,13 +196,13 @@ public class MainActivity extends AppCompatActivity {
 
                         if (set.charAt(number) == '+')//adding
                         {
-                            result=(first+second);
+                            result=(first.add(second,m));
                         }
                         else if(set.charAt(number) == '-')//subtracting
                         {
-                            result=(first-second);
+                            result=first.subtract(second,m);
                         }
-                        set = set.substring(0,whichIndexTaken) + Double.toString(result) + set.substring(delimetersOperationSigns.get(whichIndexDelimiter+1));
+                        set = set.substring(0,whichIndexTaken) + result.toString() + set.substring(delimetersOperationSigns.get(whichIndexDelimiter+1));
                         delimetersOperationSigns = getOperationSigns(set);
                         Log.d(TAG, "manipulateEditText: przyjął nową tablicę(+/-)");
                         whichIndexDelimiter = 0;
@@ -209,8 +217,8 @@ public class MainActivity extends AppCompatActivity {
             Long result = new Long((long) Double.parseDouble(set));
             set = result.toString();
         }
-        DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
-        set = decimalFormat.format(Double.parseDouble(set));
+        //DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
+        //set = decimalFormat.format(Double.parseDouble(set));
         textViewResult.setText(set);
     }
     public ArrayList<Integer> getOperationSigns(String text)
