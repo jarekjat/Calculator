@@ -23,6 +23,8 @@ import java.util.ListIterator;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
+    //Kuba
+    //KubaKubaKuba
     private static final String TAG = "Calculator";
     //ArrayList<Button> numbersButtonList= new ArrayList<>();
 
