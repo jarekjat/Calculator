@@ -24,7 +24,7 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
     //Kuba
-    //KubaKubaKuba
+    //KubaKubaKubakkkkkkkkkkk
     private static final String TAG = "Calculator";
     //ArrayList<Button> numbersButtonList= new ArrayList<>();
 
@@ -124,7 +124,15 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else if(set.charAt(number) == '\u00F7')//division
                         {
-                            result=first.divide(second,m);
+                            if(second.equals(0))
+                            {
+                                textViewResult.setText("Can't divide by 0");
+                                return;
+                            }
+                            else
+                            {
+                                result=first.divide(second,m);
+                            }
                         }
                         set = set.substring(0,whichIndexTaken) +  result.toString() + set.substring(delimetersOperationSigns.get(whichIndexDelimiter+1));
                         delimetersOperationSigns = getOperationSigns(set);
