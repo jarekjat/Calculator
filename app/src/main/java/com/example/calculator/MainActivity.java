@@ -65,9 +65,15 @@ public class MainActivity extends AppCompatActivity {
             whetherFirstCharacterInEditText = false;
         }
         String set;
+        set = editText.getText().toString();
+        if(set.length() >=1 && whichOne==0 && set.charAt(set.length()-1) == '\u00F7'){
+            textViewResult.setText("Can't divide by 0");
+            //editText.setText("");
+            return;
+        }
         if(whichOne != -1)//-1 is used in backspaceButton onClick method - I don't add any number through it
         {
-            set = editText.getText().toString() + whichOne;
+             set += whichOne;
             editText.setText(set);
         }
         else
@@ -314,6 +320,13 @@ public class MainActivity extends AppCompatActivity {
         {
             set += "-";
             editText.setText(set);
+            return;
+        }
+        else if(set.equals("0"))
+        {
+            set = "-";
+            editText.setText(set);
+            whetherFirstCharacterInEditText = false;
             return;
         }
         else if (set.charAt(set.length() - 1) == '+' || set.charAt(set.length() - 1) == '-' || set.charAt(set.length() - 1) == '\u00D7' || set.charAt(set.length() - 1) == '\u00F7') {

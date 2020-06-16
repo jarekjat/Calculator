@@ -19,10 +19,9 @@
         android:numeric="signed|integer|decimal"
         android:singleLine="false"
         android:text="0"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/my_button"
+        android:background="@color/colorPink"
         android:textAlignment="viewEnd"
-        android:textColor="@color/colorPink"
+        android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorPink"
         android:textColorLink="@color/colorPink"
         android:textCursorDrawable="@color/colorPink"
@@ -40,10 +39,10 @@
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:scrollHorizontally="true"
         android:text="0"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/my_edit_text"
+
+        android:background="@color/colorPink"
         android:textAlignment="viewEnd"
-        android:textColor="@color/colorPinkLight"
+        android:textColor="@color/colorWhite"
         android:textDirection="ltr"
         android:textIsSelectable="true"
         android:textSize="60sp" />
@@ -55,11 +54,7 @@
     android:layout_height="match_parent"
     android:id="@+id/relativeLayoutLower"
     android:layout_below="@+id/relativeLayoutUpper"
-    android:layout_marginTop="3dp"
-    android:layout_marginBottom="3dp"
-    android:layout_marginLeft="3dp"
-    android:layout_marginRight="3dp"
-    android:background="@null"
+    android:background="@color/colorPink"
 
     >
     <androidx.gridlayout.widget.GridLayout
