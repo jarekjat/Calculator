@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@null"
     tools:context=".MainActivity">
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relativeLayoutUpper">
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -16,7 +19,8 @@
         android:numeric="signed|integer|decimal"
         android:singleLine="false"
         android:text="0"
-        android:background="@null"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/my_button"
         android:textAlignment="viewEnd"
         android:textColor="@color/colorPink"
         android:textColorHint="@color/colorPink"
@@ -36,18 +40,32 @@
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:scrollHorizontally="true"
         android:text="0"
-
+        android:layout_marginTop="3dp"
+        android:background="@drawable/my_edit_text"
         android:textAlignment="viewEnd"
         android:textColor="@color/colorPinkLight"
         android:textDirection="ltr"
         android:textIsSelectable="true"
         android:textSize="60sp" />
+</RelativeLayout>
 
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayoutLower"
+    android:layout_below="@+id/relativeLayoutUpper"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    android:background="@null"
+
+    >
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewResult"
+        android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="3dp"
@@ -56,6 +74,7 @@
         android:layout_marginBottom="3dp"
         android:foregroundGravity="center_horizontal"
         app:columnCount="4"
+        android:background="@drawable/my_edit_text"
         app:useDefaultMargins="true">
 
         <Button
@@ -69,6 +88,8 @@
             android:soundEffectsEnabled="true"
             android:text="@string/_7"
             android:textColor="@color/colorPink"
+            android:elevation="10dp"
+            android:padding="10dp"
             android:textSize="30sp" />
 
         <Button
@@ -151,7 +172,7 @@
             android:layout_height="75dp"
             android:layout_below="@+id/editText"
             android:layout_toRightOf="@+id/btn8"
-            android:background="@drawable/operation_button"
+            android:background="@drawable/select_effect_pink"
             android:onClick="onbtnMultiplyClick"
             android:text="@string/Multiplication"
             android:textColor="@color/colorWhite"
@@ -202,7 +223,7 @@
             android:layout_height="75dp"
             android:layout_below="@+id/editText"
             android:layout_toRightOf="@+id/btn8"
-            android:background="@drawable/operation_button"
+            android:background="@drawable/select_effect_pink"
             android:onClick="onbtnAddClick"
             android:text="@string/Adding"
             android:textColor="@color/colorWhite"
@@ -250,7 +271,7 @@
             android:layout_height="75dp"
             android:layout_below="@+id/editText"
             android:layout_toRightOf="@+id/btn8"
-            android:background="@drawable/operation_button"
+            android:background="@drawable/select_effect_pink"
             android:onClick="onbtnSubtractClick"
             android:text="@string/Subtracting"
             android:textColor="@color/colorWhite"
@@ -279,4 +300,6 @@
             android:textColor="@color/colorPink"
             android:textSize="30sp" />
     </androidx.gridlayout.widget.GridLayout>
+</RelativeLayout>
+
 </RelativeLayout>

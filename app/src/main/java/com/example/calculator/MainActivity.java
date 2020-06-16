@@ -2,7 +2,6 @@ package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,38 +10,31 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Calculator";
     //ArrayList<Button> numbersButtonList= new ArrayList<>();
 
-    private Button btn0;
-    private Button btn1;
-    private Button btn2;
-    private Button btn3;
-    private Button btn4;
-    private Button btn5;
-    private Button btn6;
-    private Button btn7;
-    private Button btn8;
-    private Button btn9;
-    private Button btnDivide;
-    private Button btnMultiply;
-    private Button btnAdd;
-    private Button btnSubtract;
-    private Button btnDot;
-    private Button btnEquals;
-    private Button btnBackspace;
+    private Button button0;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button button7;
+    private Button button8;
+    private Button button9;
+    private Button buttonDivide;
+    private Button buttonMultiply;
+    private Button buttonAdd;
+    private Button buttonSubtract;
+    private Button buttonDot;
+    private Button buttonEquals;
+    private Button buttonBackspace;
     private EditText editText;
     private TextView textViewResult;
     private boolean whetherFirstCharacterInEditText = true;
@@ -51,16 +43,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn0 = (Button) findViewById(R.id.btn0);
-        btn1 = (Button) findViewById(R.id.btn1);
-        btn2 = (Button) findViewById(R.id.btn2);
-        btn3 = (Button) findViewById(R.id.btn3);
-        btn4 = (Button) findViewById(R.id.btn4);
-        btn5 = (Button) findViewById(R.id.btn5);
-        btn6 = (Button) findViewById(R.id.btn6);
-        btn7 = (Button) findViewById(R.id.btn7);
-        btn8 = (Button) findViewById(R.id.btn8);
-        btn9 = (Button) findViewById(R.id.btn9);
+        button0 = (Button) findViewById(R.id.btn0);
+        button1 = (Button) findViewById(R.id.btn1);
+        button2 = (Button) findViewById(R.id.btn2);
+        button3 = (Button) findViewById(R.id.btn3);
+        button4 = (Button) findViewById(R.id.btn4);
+        button5 = (Button) findViewById(R.id.btn5);
+        button6 = (Button) findViewById(R.id.btn6);
+        button7 = (Button) findViewById(R.id.btn7);
+        button8 = (Button) findViewById(R.id.btn8);
+        button9 = (Button) findViewById(R.id.btn9);
         editText = (EditText) findViewById(R.id.editText);
         textViewResult = (TextView) findViewById(R.id.textViewResult);
     }
