@@ -61,12 +61,12 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/relativeLayoutUpper"
         android:background="@color/colorPink"
-
+        android:gravity="center_horizontal"
         >
 
         <androidx.gridlayout.widget.GridLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
@@ -81,8 +81,8 @@
 
             <Button
                 android:id="@+id/btn7"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toStartOf="@+id/btn8"
                 android:background="@drawable/select_effect_white"
@@ -91,13 +91,15 @@
                 android:padding="10dp"
                 android:soundEffectsEnabled="true"
                 android:text="@string/_7"
+                android:textAlignment="gravity"
+                android:gravity="center"
                 android:textColor="@color/colorPink"
                 android:textSize="30sp" />
 
             <Button
                 android:id="@+id/btn8"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/select_effect_white"
@@ -108,8 +110,8 @@
 
             <Button
                 android:id="@+id/btn9"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/btn8"
                 android:background="@drawable/select_effect_white"
@@ -120,8 +122,8 @@
 
             <Button
                 android:id="@+id/btnDivision"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/btn8"
                 android:background="@drawable/select_effect_pink"
@@ -133,8 +135,8 @@
 
             <Button
                 android:id="@+id/btn4"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn7"
                 android:layout_toStartOf="@+id/btn5"
                 android:background="@drawable/select_effect_white"
@@ -145,8 +147,8 @@
 
             <Button
                 android:id="@+id/btn5"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn8"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/select_effect_white"
@@ -157,8 +159,8 @@
 
             <Button
                 android:id="@+id/btn6"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn9"
                 android:layout_toEndOf="@+id/btn5"
                 android:background="@drawable/select_effect_white"
@@ -170,8 +172,8 @@
 
             <Button
                 android:id="@+id/btnMultiplication"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/btn8"
                 android:background="@drawable/select_effect_pink"
@@ -183,8 +185,8 @@
 
             <Button
                 android:id="@+id/btn1"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn4"
                 android:layout_toStartOf="@+id/btn2"
                 android:background="@drawable/select_effect_white"
@@ -195,8 +197,8 @@
 
             <Button
                 android:id="@+id/btn2"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn5"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/select_effect_white"
@@ -207,8 +209,8 @@
 
             <Button
                 android:id="@+id/btn3"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn6"
                 android:layout_toEndOf="@+id/btn2"
                 android:background="@drawable/select_effect_white"
@@ -221,8 +223,8 @@
 
             <Button
                 android:id="@+id/btnAdding"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/btn8"
                 android:background="@drawable/select_effect_pink"
@@ -233,8 +235,8 @@
 
             <Button
                 android:id="@+id/btn0"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn1"
                 android:layout_toStartOf="@+id/btnDot"
                 android:background="@drawable/select_effect_white"
@@ -245,8 +247,8 @@
 
             <Button
                 android:id="@+id/btnDot"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn2"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/select_effect_white"
@@ -257,8 +259,8 @@
 
             <Button
                 android:id="@+id/btnEquals"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btn3"
                 android:layout_toEndOf="@+id/btnDot"
                 android:background="@drawable/my_button"
@@ -269,8 +271,8 @@
 
             <Button
                 android:id="@+id/btnSubtracting"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/btn8"
                 android:background="@drawable/select_effect_pink"
@@ -281,8 +283,8 @@
 
             <Button
                 android:id="@+id/btnClear"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/btnEquals"
                 android:background="@drawable/select_effect_white"
@@ -293,8 +295,8 @@
 
             <Button
                 android:id="@+id/btnBackspace"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/editText"
                 android:layout_toEndOf="@+id/btnEquals"
                 android:background="@drawable/select_effect_white"

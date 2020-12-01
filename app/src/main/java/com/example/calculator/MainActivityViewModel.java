@@ -153,9 +153,6 @@ public class MainActivityViewModel extends ViewModel {
                             catch (NumberFormatException e)
                             {
                                 _toastMessage.setValue("This is too many");
-//                                Toast toast = Toast.makeText(MainActivity.this,
-//                                        "This is too many",Toast.LENGTH_SHORT);
-//                                toast.show();
                                 Log.d(TAG, e.getMessage());
                                 return;
                             }
@@ -170,9 +167,6 @@ public class MainActivityViewModel extends ViewModel {
                             catch (NumberFormatException e)
                             {
                                 _toastMessage.setValue("This is too many");
-//                                Toast toast = Toast.makeText(MainActivity.this,
-//                                        "This is too many",Toast.LENGTH_SHORT);
-//                                toast.show();
                                 e.getMessage();
                                 return;
                             }
