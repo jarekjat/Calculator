@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="mainActivityViewModel"
+            type="com.example.calculator.MainActivityViewModel"/>
+    </data>
+
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +25,7 @@
         android:editable="false"
         android:numeric="signed|integer|decimal"
         android:singleLine="false"
-        android:text="0"
+        android:text="@{mainActivityViewModel.getEditTextText()}"
         android:background="@color/colorPink"
         android:textAlignment="viewEnd"
         android:textColor="@color/colorWhite"
@@ -38,7 +45,7 @@
         android:saveEnabled="true"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:scrollHorizontally="true"
-        android:text="0"
+        android:text="@{mainActivityViewModel.getTextViewText()}"
 
         android:background="@color/colorPink"
         android:textAlignment="viewEnd"
@@ -290,7 +297,7 @@
             android:layout_below="@+id/editText"
             android:layout_toEndOf="@+id/btnEquals"
             android:background="@drawable/select_effect_white"
-            android:onClick="onbtnBackspceClick"
+            android:onClick="onbtnBackspaceClick"
             android:text="@string/backspace"
             android:textColor="@color/colorPink"
             android:textSize="30sp" />
@@ -298,3 +305,5 @@
 </RelativeLayout>
 
 </RelativeLayout>
+
+</layout>
