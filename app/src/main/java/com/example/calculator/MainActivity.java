@@ -36,10 +36,11 @@ public class MainActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this)
                 .get(MainActivityViewModel.class);
         binding.setMainActivityViewModel(viewModel);
-        editText = (EditText) findViewById(R.id.editText);
-        textViewResult = (TextView) findViewById(R.id.textViewResult);
-        editText.setText(viewModel.getEditTextText().getValue());
-        textViewResult.setText(viewModel.get_textViewText());
+        binding.setLifecycleOwner(this);
+//        editText = (EditText) findViewById(R.id.editText);
+//        textViewResult = (TextView) findViewById(R.id.textViewResult);
+//        editText.setText(viewModel.getEditTextText().getValue());
+//        textViewResult.setText(viewModel.get_textViewText());
         whetherFirstCharacterInEditText = viewModel.isWhetherFirstCharacterInEditText();
         final Observer<String> toastMessageObserver = new Observer<String>() {
             @Override
@@ -51,22 +52,22 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         viewModel.getToastMessage().observe(this,toastMessageObserver);
-        final Observer<String> textViewResultObserver = new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String newName) {
-                // Update the UI, in this case, a TextView.
-                textViewResult.setText(viewModel.getTextViewText().getValue());
-            }
-        };
-        viewModel.getTextViewText().observe(this,textViewResultObserver);
-        final Observer<String> editTextObserver = new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String newName) {
-                // Update the UI, in this case, a TextView.
-                editText.setText(viewModel.getEditTextText().getValue());
-            }
-        };
-        viewModel.getEditTextText().observe(this,editTextObserver);
+//        final Observer<String> textViewResultObserver = new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable final String newName) {
+//                // Update the UI, in this case, a TextView.
+//                textViewResult.setText(viewModel.getTextViewText().getValue());
+//            }
+//        };
+//        viewModel.getTextViewText().observe(this,textViewResultObserver);
+//        final Observer<String> editTextObserver = new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable final String newName) {
+//                // Update the UI, in this case, a TextView.
+//                editText.setText(viewModel.getEditTextText().getValue());
+//            }
+//        };
+//        viewModel.getEditTextText().observe(this,editTextObserver);
     }
 
     public void onbtn0Click(View view) {
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onbtnDivideClick(View view) {
-        String set = editText.getText().toString();
+        String set = viewModel.getEditTextText().getValue();
         if(set.length() == 0) return;
         if (set.charAt(set.length() - 1) == '+' || set.charAt(set.length() - 1) == '-' || set.charAt(set.length() - 1) == '\u00D7' || set.charAt(set.length() - 1) == '\u00F7') {
             Toast toast = Toast.makeText(MainActivity.this, "Can't put two operation signs next to each other", Toast.LENGTH_SHORT);
@@ -116,12 +117,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         set += "\u00F7";
-        //editText.setText(set);
         viewModel.set_editTextText(set);
     }
 
     public void onbtnMultiplyClick(View view) {
-        String set = editText.getText().toString();
+        String set = viewModel.getEditTextText().getValue();
         if(set.length() == 0) return;
         if (set.charAt(set.length() - 1) == '+' || set.charAt(set.length() - 1) == '-' || set.charAt(set.length() - 1) == '\u00D7' || set.charAt(set.length() - 1) == '\u00F7') {
             Toast toast = Toast.makeText(MainActivity.this, "Can't put two operation signs next to each other", Toast.LENGTH_SHORT);
@@ -129,12 +129,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         set += "\u00D7";
-        //editText.setText(set);
         viewModel.set_editTextText(set);
     }
 
     public void onbtnAddClick(View view) {
-        String set = editText.getText().toString();
+        String set = viewModel.getEditTextText().getValue();
         if(set.length() == 0) return;
         if (set.charAt(set.length() - 1) == '+' || set.charAt(set.length() - 1) == '-' || set.charAt(set.length() - 1) == '\u00D7' || set.charAt(set.length() - 1) == '\u00F7') {
             Toast toast = Toast.makeText(MainActivity.this, "Can't put two operation signs next to each other", Toast.LENGTH_SHORT);
@@ -142,23 +141,20 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         set += "+";
-        //editText.setText(set);
         viewModel.set_editTextText(set);
     }
 
     public void onbtnSubtractClick(View view) {
-        String set = editText.getText().toString();
+        String set = viewModel.getEditTextText().getValue();
         if (set.length() == 0)
         {
             set += "-";
-            editText.setText(set);
             viewModel.set_editTextText(set);
             return;
         }
         else if(set.equals("0"))
         {
             set = "-";
-            //editText.setText(set);
             viewModel.set_editTextText(set);
             whetherFirstCharacterInEditText = false;
             return;
@@ -169,26 +165,22 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         set += "-";
-        //editText.setText(set);
         viewModel.set_editTextText(set);
     }
 
     public void onbtnClearClick(View view) {
-        //editText.setText("");
         viewModel.set_editTextText("");
-        textViewResult.setText("");
+        viewModel.set_textViewText("");
     }
 
     public void onbtnEqualsClick(View view) {
         viewModel.set_editTextText(viewModel.get_textViewText());
-        //editText.setText(textViewResult.getText().toString());
     }
 
     public void onbtnDotClick(View view) {
-        String set = editText.getText().toString();
+        String set = viewModel.getEditTextText().getValue();
         if (!set.contains(".")) {
             set += ".";
-            //editText.setText(set);
             viewModel.set_editTextText(set);
             return;
         }
@@ -219,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
         }
         set += ".";
         viewModel.set_editTextText(set);
-        //editText.setText(set);
 
     }
     public void onbtnBackspaceClick(View view)
@@ -244,7 +235,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         viewModel.set_editTextText(set);
-        //editText.setText(set);
         if(set.length() > 0){
             if(set.charAt(set.length()-1) != '-' && set.charAt(set.length()-1) != '+' && set.charAt(set.length()-1) != '\u00D7' && set.charAt(set.length()-1) != '\u00F7')
             {
